@@ -1,0 +1,25 @@
+upstream_project_url: https://github.com/dustymabe/vagrant-sshfs
+upstream_ref: master
+specfile_path: downstream-fedora-dist-git/vagrant-sshfs.spec
+synced_files:
+  - downstream-fedora-dist-git/
+  - .packit.yaml
+upstream_package_name: vagrant-sshfs
+downstream_package_name: vagrant-sshfs
+create_pr: true # Don't push to dist-git, create PR
+jobs:
+- job: sync_from_downstream
+  trigger: commit
+- job: propose_downstream
+  trigger: commit
+  metadata:
+    dist-git-branch: master
+- job: propose_downstream
+  trigger: release
+  metadata:
+    dist-git-branch: f31
+- job: copr_build
+  trigger: pull_request
+  metadata:
+    targets:
+    - fedora-31-x86_64
