@@ -3,11 +3,11 @@
 
 Name: %{vagrant_plugin_name}
 Version: 1.3.1
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: A Vagrant synced folder plugin that mounts folders via SSHFS
 License: GPLv2
 URL: https://github.com/dustymabe/vagrant-sshfs
-Source0: https://rubygems.org/gems/%{vagrant_plugin_name}-%{version}.gem
+Source0: https://github.com/dustymabe/vagrant-sshfs/archive/v%{version}.tar.gz
 
 Requires: vagrant >= 1.9.1
 BuildRequires: vagrant >= 1.9.1
@@ -15,7 +15,6 @@ BuildRequires: rubygems
 BuildRequires: rubygem(rdoc)
 BuildArch: noarch
 Provides: vagrant(%{vagrant_plugin_name}) = %{version}
-Patch1: 0001-remove-win32-dep.patch
 
 %description
 A Vagrant synced folder plugin that mounts folders via SSHFS. 
@@ -32,12 +31,13 @@ BuildArch: noarch
 Documentation for %{name}.
 
 %prep
-gem unpack %{SOURCE0}
+%setup -T -b 0 -q -n %{vagrant_plugin_name}-%{version}
 
-%setup -q -D -T -n  %{vagrant_plugin_name}-%{version}
+# since we don't have the full git repo we can't use `git ls-files`
+sed -i 's/git ls-files -z/find . -type f -print0/' %{vagrant_plugin_name}.gemspec
 
-gem spec %{SOURCE0} -l --ruby > %{vagrant_plugin_name}.gemspec
-%patch1
+# remove dependencies on windows libraries (needed for windows, not linux)
+sed -e '/win32-process/d' %{vagrant_plugin_name}.gemspec
 
 %build
 # Create the gem as gem install only works on a gem file
@@ -76,6 +76,9 @@ cp -a .%{vagrant_plugin_dir}/* \
 %{vagrant_plugin_instdir}/vagrant-sshfs.gemspec
 
 %changelog
+* Tue December 10 2019 Dusty Mabe <dusty@dustymabe.com> - 1.3.1-5
+- Change to build from tar archive. Preparing for packit.
+
 * Sat Jul 27 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
