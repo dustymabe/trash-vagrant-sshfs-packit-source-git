@@ -7,19 +7,19 @@ synced_files:
 upstream_package_name: vagrant-sshfs
 downstream_package_name: vagrant-sshfs
 create_pr: true # Don't push to dist-git, create PR
-jobs:
-- job: sync_from_downstream
-  trigger: commit
-- job: propose_downstream
-  trigger: commit
-  metadata:
-    dist-git-branch: master
-- job: propose_downstream
-  trigger: release
-  metadata:
-    dist-git-branch: f31
-- job: copr_build
-  trigger: pull_request
-  metadata:
-    targets:
-    - fedora-31-x86_64
+####jobs:
+####- job: sync_from_downstream
+####  trigger: commit
+####- job: propose_downstream
+####  trigger: commit
+####  metadata:
+####    dist-git-branch: master
+####- job: propose_downstream
+####  trigger: release
+####  metadata:
+####    dist-git-branch: f31
+####- job: copr_build
+####  trigger: pull_request
+####  metadata:
+####    targets:
+####    - fedora-31-x86_64
