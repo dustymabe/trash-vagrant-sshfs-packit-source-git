@@ -1,5 +1,5 @@
 upstream_project_url: https://github.com/dustymabe/vagrant-sshfs
-#upstream_ref: master
+upstream_ref: vagrant-sshfs-master-f29
 specfile_path: downstream-fedora-dist-git/vagrant-sshfs.spec
 synced_files:
   - downstream-fedora-dist-git/
