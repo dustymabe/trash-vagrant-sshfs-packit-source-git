@@ -1,4 +1,4 @@
-#upstream_project_url: https://github.com/dustymabe/vagrant-sshfs
+upstream_project_url: https://github.com/dustymabe/trash-vagrant-sshfs-packit-source-git
 
 # The upstream_ref is the last upstream commit. All commits in the
 # current branch after that commit are "patches" that will be added
