@@ -3,7 +3,7 @@
 
 Name: %{vagrant_plugin_name}
 Version: 1.3.1
-Release: 5%{?dist}
+Release: 6%{?dist}
 Summary: A Vagrant synced folder plugin that mounts folders via SSHFS
 License: GPLv2
 URL: https://github.com/dustymabe/vagrant-sshfs
