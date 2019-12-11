@@ -1,4 +1,4 @@
-upstream_project_url: https://github.com/dustymabe/trash-vagrant-sshfs-packit-source-git
+#upstream_project_url: https://github.com/dustymabe/trash-vagrant-sshfs-packit-source-git
 
 # The upstream_ref is the last upstream commit. All commits in the
 # current branch after that commit are "patches" that will be added
@@ -11,6 +11,8 @@ specfile_path: vagrant-sshfs.spec
 synced_files:
   - vagrant-sshfs.spec
 create_pr: true # Don't push to dist-git, create PR
+# our tags in git are v1.0.0 and our rpm versions are 1.0.0
+upstream_tag_template: v{version}
 ####jobs:
 ####- job: sync_from_downstream
 ####  trigger: commit
