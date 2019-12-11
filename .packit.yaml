@@ -7,10 +7,7 @@ upstream_ref: v1.3.1
 
 upstream_package_name: vagrant-sshfs
 downstream_package_name: vagrant-sshfs
-specfile_path: downstream-fedora-dist-git/vagrant-sshfs.spec
-synced_files:
-  - downstream-fedora-dist-git/
-  - .packit.yaml
+specfile_path: vagrant-sshfs.spec
 create_pr: true # Don't push to dist-git, create PR
 ####jobs:
 ####- job: sync_from_downstream
