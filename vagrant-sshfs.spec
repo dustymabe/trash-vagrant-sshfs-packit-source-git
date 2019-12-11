@@ -76,7 +76,7 @@ cp -a .%{vagrant_plugin_dir}/* \
 %{vagrant_plugin_instdir}/vagrant-sshfs.gemspec
 
 %changelog
-* Tue December 10 2019 Dusty Mabe <dusty@dustymabe.com> - 1.3.1-5
+* Tue Dec 10 2019 Dusty Mabe <dusty@dustymabe.com> - 1.3.1-5
 - Change to build from tar archive. Preparing for packit.
 
 * Sat Jul 27 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.1-4
